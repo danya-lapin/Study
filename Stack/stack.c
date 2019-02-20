@@ -2,10 +2,8 @@
 #include <stdlib.h>
 
 #include "stack.h"
-<<<<<<< HEAD
 #include "test.h"
-=======
->>>>>>> 83d0c64f9a7fa61f63eb8e9752fd9112c806a65d
+
 typedef struct stack{
     int data;
     struct stack *next;
@@ -18,17 +16,13 @@ stack *create_stack(int value){
     return head;
 }
 
-<<<<<<< HEAD
 stack *push(stack *head, int value){
-=======
 void push(stack *head, int value){
->>>>>>> 83d0c64f9a7fa61f63eb8e9752fd9112c806a65d
     if(head == NULL){
         head = create_stack(value);
     }
     if(head->next == NULL){
         stack *next = malloc(sizeof(stack));
-<<<<<<< HEAD
         next->next = NULL;
         next->data = value;
         head->next = next;
@@ -37,7 +31,6 @@ void push(stack *head, int value){
 }
 
 void delete_stack(stack *head){
-=======
         next->data = value;
         next->next = NULL;
         head->next = next;
@@ -48,7 +41,6 @@ void delete_stack(stack *head){
 }
 
 void delete_stack(stack *head, int value){
->>>>>>> 83d0c64f9a7fa61f63eb8e9752fd9112c806a65d
     if(head == NULL){
         return;
     }
@@ -56,7 +48,6 @@ void delete_stack(stack *head, int value){
         free(head);
     }
     else{
-<<<<<<< HEAD
         delete_stack(head->next);
         return;
     }
@@ -95,7 +86,6 @@ stack *pop(stack *head) {
 }
 int get_head_data(stack *head){
     return head->data;
-=======
         return delete_stack(head->next, value);
     }
 }
@@ -129,5 +119,4 @@ void pop(stack *head, int value){
     else{
         return pop(head->next, value);
     }
->>>>>>> 83d0c64f9a7fa61f63eb8e9752fd9112c806a65d
 }
