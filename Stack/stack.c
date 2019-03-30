@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "stack.h"
 #include "test.h"
-
 typedef struct stack{
     int data;
     struct stack *next;
@@ -17,7 +17,6 @@ stack *create_stack(int value){
 }
 
 stack *push(stack *head, int value){
-void push(stack *head, int value){
     if(head == NULL){
         head = create_stack(value);
     }
@@ -25,22 +24,16 @@ void push(stack *head, int value){
         stack *next = malloc(sizeof(stack));
         next->next = NULL;
         next->data = value;
-        head->next = next;
+        stack *tmp = malloc(sizeof(stack));
+        tmp->next = head->next;
+        tmp->data = head->data;
+        head = next;
+        head->next = tmp;
     }
-    return head->next;
+    return head;
 }
 
 void delete_stack(stack *head){
-        next->data = value;
-        next->next = NULL;
-        head->next = next;
-    }
-    else{
-        return push(head->next, value);
-    }
-}
-
-void delete_stack(stack *head, int value){
     if(head == NULL){
         return;
     }
@@ -54,10 +47,9 @@ void delete_stack(stack *head, int value){
 
 }
 
-//TODO: ERROR
 stack *find_value(stack *head, int value){
     if(head == NULL) {
-        return 0;
+        return NULL;
     }
     if(head->data == value) {
         return head;
@@ -67,56 +59,108 @@ stack *find_value(stack *head, int value){
     }
 }
 
-
-stack *pop(stack *head) {
-    if (head == NULL) {
-        return 0;
+stack *pop(stack *head, int *result, int *error) {
+    if (head == NULL){
+        *error = 1;
+        return NULL;
+    } else {
+        *error = 0;
     }
-    if (head->next == NULL) {
-        free(head);
-        return 0;
-    }
-    if (head->next->next == NULL){
-        free(head->next);
-    }
-    else{
-        return pop(head->next);
-    }
-    return head;
+    *result = head->data;
+    stack *next = head->next;
+    free(head);
+    return next;
 }
+
 int get_head_data(stack *head){
     return head->data;
-        return delete_stack(head->next, value);
-    }
-}
-void *find_value(stack *head, int value){
-    if(head == NULL){
-        return 0;
-    }
-    if(head->next == NULL){
-        return head;
-    }
-    if(head->data == value){
-        return head;
-    }
-    if(head->next != NULL){
-        return find_value(head->next, value);
-    }
-    return 0;
 }
 
-void pop(stack *head, int value){
-    if(head == NULL){
-        return;
+int convert_string_to_int(const char *string)
+{
+    int i, sign = 1, offset, result;
+
+    if (string[0] == '-') {
+        sign = -1;
     }
-    if(head->next == NULL){
-        free(head);
+    if (sign == -1) {  // Set starting position to convert
+        offset = 1;
     }
-    head = find_value(head, value);
-    if(value == head->data){
-        free(head);
+    else {
+        offset = 0;
     }
-    else{
-        return pop(head->next, value);
+    result = 0;
+    for (i = offset; string[i] != '\0'; i++) {
+        result = result * 10 + (string[i] - '0');
     }
+    if (sign == -1) {
+        result = -result;
+    }
+    return result;
+}
+
+
+int calculate(char *expression, int *error)
+{
+    stack *head = NULL;
+    int num, previous = 0;
+    int i = 0;
+    while (expression[i] != '\0')
+    {
+        char symbol = expression[i];
+        char buffer[15] = {'\0'};
+        switch(symbol)
+        {
+            case ' ':
+            {
+                for(int j = previous; j < i; j++)
+                {
+                    buffer[j] = expression[j];
+                }
+                num = convert_string_to_int(buffer);
+                buffer[0] = '\0';
+                head = push(head, num);
+                previous += i;
+                break;
+            }
+            case '+':
+            {
+                int a = head->data;
+                int b = head->next->data;
+                head = push(head, a + b);
+                break;
+            }
+            case '*':
+            {
+                int a = head->data;
+                int b = head->next->data;
+                head = push(head, a * b);
+                break;
+            }
+            case '/':
+            {
+                int a = head->data;
+                int b = head->next->data;
+                head = push(head, a / b);
+                break;
+            }
+            case '-':
+            {
+                int a = head->data;
+                int b = head->next->data;
+                head = push(head, a - b);
+                break;
+            }
+            default:
+            {
+                continue;
+            }
+        }
+        i++;
+    }
+    if(head->next != NULL)
+    {
+        printf("Incorrect string ");
+    }
+    return head->data;
 }

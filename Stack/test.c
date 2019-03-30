@@ -43,14 +43,15 @@ void push_test(stack *head, int value){
         printf("Push test: Fail\n");
     }
 }
-void pop_test(stack *head){
-    push(head, 10);
-    pop(head);
-    int data = get_head_data(head);
-    if(data == 9){
-        printf("Pop test: OK\n");
-    }
-    else{
-        printf("Pop test: Fail\n");
-    }
-}
+
+//void pop_test(stack *head){
+//    push(head, 10);
+//    pop(head);
+//    int data = get_head_data(head);
+//    if(data == 9){
+//        printf("Pop test: OK\n");
+//    }
+//    else{
+//        printf("Pop test: Fail\n");
+//    }
+//}

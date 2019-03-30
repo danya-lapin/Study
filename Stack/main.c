@@ -4,16 +4,25 @@
 #include "test.h"
 
 int main() {
-    stack *head = create_stack(9);
-    create_stack_test(10);
-    delete_stack_test(head);
-    find_value_test(head);
-    push_test(head, 9);
-    stack *test_head = create_stack(9);
-    pop_test(test_head);
-int main() {
-    stack *head = create_stack(10);
-    push(head, 86);
-    pop(head, 86);
-    return 0;
+
+    int err;
+    calculate("25 32 + 11 -", &err);
+//    int err;
+//    printf("result: %d, %d", calculate("25 32 + 11 -", &err), err);
+//    return 1;
+//    char expression[100] = {0};
+//    printf("enter expression\n");
+//    //scanf(" %s ", expression);
+//    fgets(expression, 100, stdin);
+//    printf("you entered: %s\n", expression);
+//    int error;
+//    int result = calculate(expression, &error);
+//    if (!error)
+//    {
+//        printf("result: %d", result);
+//    }
+//    else {
+//        printf("error");
+//    }
+//    return 0;
 }
