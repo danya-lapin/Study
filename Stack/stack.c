@@ -20,7 +20,7 @@ stack *push(stack *head, int value){
     if(head == NULL){
         head = create_stack(value);
     }
-    if(head->next == NULL){
+    else if(head->next == NULL){
         stack *next = malloc(sizeof(stack));
         next->next = NULL;
         next->data = value;
@@ -83,7 +83,7 @@ int convert_string_to_int(const char *string)
     if (string[0] == '-') {
         sign = -1;
     }
-    if (sign == -1) {  // Set starting position to convert
+    if (sign == -1) {
         offset = 1;
     }
     else {
@@ -103,64 +103,76 @@ int convert_string_to_int(const char *string)
 int calculate(char *expression, int *error)
 {
     stack *head = NULL;
-    int num, previous = 0;
-    int i = 0;
+    int num;
+    int i = 0, j = 0;
+    char buffer[15] = {0};
     while (expression[i] != '\0')
     {
         char symbol = expression[i];
-        char buffer[15] = {'\0'};
-        switch(symbol)
-        {
-            case ' ':
-            {
-                for(int j = previous; j < i; j++)
-                {
-                    buffer[j] = expression[j];
+        switch(symbol) {
+            case ' ': {
+                j = 0;
+                if(expression[i - 1] == '+' || expression[i - 1] == '-' || expression[i - 1] == '*' || expression[i - 1] == '/') {
+                    break;
                 }
                 num = convert_string_to_int(buffer);
-                buffer[0] = '\0';
+                for (int k = 0; k < 15; k++) {
+                    buffer[k] = 0;
+                }
                 head = push(head, num);
-                previous += i;
                 break;
             }
-            case '+':
-            {
-                int a = head->data;
-                int b = head->next->data;
+            case '+': {
+                int a, b;
+                head = pop(head, &a, error);
+                head = pop(head, &b, error);
                 head = push(head, a + b);
                 break;
             }
-            case '*':
-            {
-                int a = head->data;
-                int b = head->next->data;
+            case '*': {
+                int a, b;
+                head = pop(head, &a, error);
+                head = pop(head, &b, error);
                 head = push(head, a * b);
                 break;
             }
-            case '/':
-            {
-                int a = head->data;
-                int b = head->next->data;
-                head = push(head, a / b);
+            case '/': {
+                int a, b;
+                head = pop(head, &a, error);
+                head = pop(head, &b, error);
+                if(a > b) {
+                    head = push(head, a / b);
+                }else{
+                    head = push(head, b / a);
+                }
                 break;
             }
-            case '-':
-            {
-                int a = head->data;
-                int b = head->next->data;
-                head = push(head, a - b);
+            case '-': {
+                int a, b;
+                head = pop(head, &a, error);
+                head = pop(head, &b, error);
+                if(a > b) {
+                    head = push(head, a - b);
+                }else{
+                    head = push(head, b - a);
+                }
                 break;
             }
-            default:
-            {
-                continue;
+            default: {
+                if (symbol >= '0' && symbol <= '9') {
+                    buffer[j] = symbol;
+                }
+                break;
             }
         }
         i++;
+        if(symbol != ' ' && !(expression[i + 1] >= '0' && symbol <= '9')) {
+            j++;
+        }
     }
     if(head->next != NULL)
     {
-        printf("Incorrect string ");
+        printf("Incorrect string");
     }
     return head->data;
 }
