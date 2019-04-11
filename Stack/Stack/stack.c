@@ -134,9 +134,10 @@ int calculate(char *expression, int *error) {
             if(buffer[0] != '\0'){
                 head = push(head, num);
             }
-            for (int k = 0; k < 15; k++) {
-                buffer[k] = 0;
-            };
+            buffer[0] = '\0';
+//            for (int k = 0; k < 15; k++) {
+//                buffer[k] = 0;
+//            }
             switch (symbol) {
                 case '+': {
                     string_check(head, symbol);
