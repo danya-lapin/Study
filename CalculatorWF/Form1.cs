@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace CalculatorWF
@@ -48,17 +50,31 @@ namespace CalculatorWF
             _calculatingBar.Text = _calculatingBar.Text.Remove(_calculatingBar.Text.Length - 1, 1);
             _calculatingBar.SelectionStart = _calculatingBar.Text.Length;
         }
-        
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            foreach (Control control in Controls)
+            {
+                control.Refresh();
+            }
+        }
 
         private void equalButton_Click(object sender, EventArgs e)
         {
+            var substrings = _calculatingBar.Text.Split('\n');
+            _calculatingBar.Text = substrings[substrings.Length - 1];
             var calculator = new Calculator(_calculatingBar.Text);
-            _calculatingBar.Text = _calculatingBar.Text + " =" + '\n' + calculator.Calculate();
+            _calculatingBar.Text = _calculatingBar.Text + @" =" + '\n' + calculator.Calculate();
         }
         private void Button_Click(object sender, EventArgs e)
         {
             var senderButton = sender as Button;
-
+            if (senderButton != null && 
+                IsOperation(Convert.ToChar(senderButton.Text)) &&
+                IsOperation(_calculatingBar.Text[_calculatingBar.Text.Length - 1]))
+            {
+                _calculatingBar.Text = _calculatingBar.Text.Remove(_calculatingBar.TextLength - 1);
+            }
             _calculatingBar.Text += 
                 senderButton?.Text ?? throw new ArgumentException("Sender is not button.");
         }
@@ -76,38 +92,41 @@ namespace CalculatorWF
         {
             var calculator = new Calculator(_calculatingBar.Text);
             var x = calculator.Calculate();
-            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            _calculatingBar.Text = (1 / x).ToString();
+            _calculatingBar.Text = (1 / x).ToString(CultureInfo.InvariantCulture);
         }
 
         private void squareButton_Click(object sender, EventArgs e)
         {
             var calculator = new Calculator(_calculatingBar.Text);
             var x = calculator.Calculate();
-            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            _calculatingBar.Text = (x * x).ToString();
+            _calculatingBar.Text = (x * x).ToString(CultureInfo.InvariantCulture);
         }
 
         private void squareRootButton_Click(object sender, EventArgs e)
         {
             var calculator = new Calculator(_calculatingBar.Text);
             var x = calculator.Calculate();
-            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            _calculatingBar.Text = (Math.Sqrt(x)).ToString();
+            _calculatingBar.Text = (Math.Sqrt(x)).ToString(CultureInfo.InvariantCulture);
         }
 
         private void percentButton_Click(object sender, EventArgs e)
         {
             var calculator = new Calculator(_calculatingBar.Text);
             var x = calculator.Calculate();
-            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            _calculatingBar.Text = (x / 100).ToString();
+            _calculatingBar.Text = (x / 100).ToString(CultureInfo.InvariantCulture);
         }
 
         private void backspaceButton_Click(object sender, EventArgs e)
         {
-            _calculatingBar.Text.Remove(_calculatingBar.Text.Length - 1);
+            if (_calculatingBar.Text.Length >= 1)
+            {
+                _calculatingBar.Text = _calculatingBar.Text.Remove(_calculatingBar.Text.Length - 1);
+            }
         }
+
         #endregion
+
+        private static bool IsOperation(char input) => input.Equals('+') || input.Equals('-') || 
+                                                       input.Equals('*') || input.Equals('/');
     }
 }

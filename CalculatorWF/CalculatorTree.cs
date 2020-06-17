@@ -66,7 +66,7 @@ namespace CalculatorWF
                 return BypassCalculate(root.Right) + root.CalculationResult;
             }
 
-            return 0;
+            return root.CalculationResult;
         }
 
         public void CreateTree(string input)

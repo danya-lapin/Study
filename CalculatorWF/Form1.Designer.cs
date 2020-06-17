@@ -23,9 +23,9 @@ namespace CalculatorWF
       this.components = new System.ComponentModel.Container();
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(432, 504);
-      this.MinimumSize = this.ClientSize;
-      this.MaximumSize = this.ClientSize;
       this.Text = "Calculator";
+
+      this.SizeChanged += new EventHandler(Form1_SizeChanged);
       
       #region Button Customize
       // Equal Button
