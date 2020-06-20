@@ -8,6 +8,7 @@ namespace GraphicEditor
         [STAThread]
         public static void Main(string[] args)
         {
+            Application.EnableVisualStyles();
             Application.Run(new GraphicEditorForm());
         }
     }

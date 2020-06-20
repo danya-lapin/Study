@@ -30,9 +30,14 @@ namespace GraphicEditor
             
             //Drawing Panel
             var drawingPanel = new Panel();
+            drawingPanel.Location = new Point( toolBox.Width, 0);
             drawingPanel.Width = this.Width - brushSettingsBox.Width - toolBox.Width;
-            drawingPanel.Location = new Point(this.Width + toolBox.Width, 0);
+            drawingPanel.Height = this.Height;
             _graphics = drawingPanel.CreateGraphics();
+            drawingPanel.MouseDown += new MouseEventHandler(DrawingPanel_MouseDown);
+            drawingPanel.MouseUp += new MouseEventHandler(DrawingPanel_MouseUp);
+            drawingPanel.MouseMove += new MouseEventHandler(DrawingPanel_MouseMove);
+            this.Controls.Add(drawingPanel);
         }
     }
 }
