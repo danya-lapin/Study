@@ -53,20 +53,10 @@ namespace CalculatorWF
         {
             if (root == null)
             {
-                return 0;
+                throw new ArgumentException("Input string is incorrect");
             }
 
-            if (root.Left != null)
-            {
-                return BypassCalculate(root.Left) + root.CalculationResult;
-            }
-
-            if (root.Right != null)
-            {
-                return BypassCalculate(root.Right) + root.CalculationResult;
-            }
-
-            return root.CalculationResult;
+            return root.Value.CalculateResult();
         }
 
         public void CreateTree(string input)
@@ -344,12 +334,6 @@ namespace CalculatorWF
         private class Node
         {
             public IOperation Value { get; set; }
-
-            public double CalculationResult
-            {
-                get => Value.CalculateResult();
-                set => CalculationResult = value;
-            }
 
             public Node Left { get; set; }
             public Node Right { get; set; }

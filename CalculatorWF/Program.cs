@@ -8,6 +8,8 @@ namespace CalculatorWF
 {
     static class Program
     {
+        //TODO: E is not recognisable by calculator
+        
         [STAThread]
         static void Main()
         {

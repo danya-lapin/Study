@@ -106,6 +106,7 @@ namespace CalculatorWF
         {
             var calculator = new Calculator(_calculatingBar.Text);
             var x = calculator.Calculate();
+            _calculatingBar.Text = calculator.Calculate().ToString(CultureInfo.InvariantCulture);
             _calculatingBar.Text = (Math.Sqrt(x)).ToString(CultureInfo.InvariantCulture);
         }
 
