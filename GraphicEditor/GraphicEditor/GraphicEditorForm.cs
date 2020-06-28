@@ -12,9 +12,9 @@ namespace GraphicEditor
         
         public GraphicEditorForm()
         {
+            InitializeComponents();
             _controller = new Controller(_graphics);
             CurrentPen = new Pen(Color.Black, 1);
-            InitializeComponents();
             _graphics.SmoothingMode = SmoothingMode.AntiAlias;
         }
 

@@ -17,6 +17,7 @@ namespace GraphicEditor
 
         public void StartDrawing(Pen pen, Point startPoint)
         {
+            CurrentTool = _model.SwitchTool(ShapeFactory.Line);
             CurrentTool.BearingPoints.Add(startPoint);
             CurrentTool.ShapePen = pen;
         }
