@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphicEditor", "GraphicEditor\GraphicEditor.csproj", "{EB265B36-0019-4C31-96FE-2D26C5AF2AE7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UndoRedoStackTest", "UndoRedoStackTest\UndoRedoStackTest.csproj", "{78495CC5-2421-4960-8E41-FAE0DF627BF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{EB265B36-0019-4C31-96FE-2D26C5AF2AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB265B36-0019-4C31-96FE-2D26C5AF2AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB265B36-0019-4C31-96FE-2D26C5AF2AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78495CC5-2421-4960-8E41-FAE0DF627BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78495CC5-2421-4960-8E41-FAE0DF627BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78495CC5-2421-4960-8E41-FAE0DF627BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78495CC5-2421-4960-8E41-FAE0DF627BF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

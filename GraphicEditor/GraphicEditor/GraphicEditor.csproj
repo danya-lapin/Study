@@ -41,8 +41,10 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Controller.cs" />
+        <Compile Include="DrawShapeCommand.cs" />
         <Compile Include="GraphicEditorForm.cs" />
         <Compile Include="GraphicEditorForm.Designer.cs" />
+        <Compile Include="ICommand.cs" />
         <Compile Include="IShape.cs" />
         <Compile Include="Line.cs" />
         <Compile Include="Model.cs" />
@@ -50,6 +52,8 @@
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="ShapeFactory.cs" />
+        <Compile Include="TestCommand.cs" />
+        <Compile Include="UndoRedoStack.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

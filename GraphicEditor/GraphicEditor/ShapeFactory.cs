@@ -1,6 +1,6 @@
 namespace GraphicEditor
 {
-    enum ShapeFactory
+    public enum ShapeFactory
     {
         Line,
         Pencil

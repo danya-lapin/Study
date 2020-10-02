@@ -3,7 +3,7 @@ using System.Drawing;
 
 namespace GraphicEditor
 {
-    class Model
+    public class Model
     {
         public List<IShape> ShapeList { get; }
         private readonly Graphics _modelGraphics;

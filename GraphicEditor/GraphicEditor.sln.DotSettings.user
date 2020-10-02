@@ -1,0 +1,10 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b28cd8eb_002D4abf_002D4cba_002Dafc3_002Db2e16e505873/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="AddTest" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::78495CC5-2421-4960-8E41-FAE0DF627BF5::.NETFramework,Version=v4.8::UndoRedoStackTest.UndoRedoStackTest.AddTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::78495CC5-2421-4960-8E41-FAE0DF627BF5::.NETFramework,Version=v4.8::UndoRedoStackTest.UndoRedoStackTest.PeekTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::78495CC5-2421-4960-8E41-FAE0DF627BF5::.NETFramework,Version=v4.8::UndoRedoStackTest.UndoRedoStackTest.ExecuteAllTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::78495CC5-2421-4960-8E41-FAE0DF627BF5::.NETFramework,Version=v4.8::UndoRedoStackTest.UndoRedoStackTest.GetCurrentCommandTest&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::78495CC5-2421-4960-8E41-FAE0DF627BF5::.NETFramework,Version=v4.8::UndoRedoStackTest.UndoRedoStackTest.UndoTest&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
