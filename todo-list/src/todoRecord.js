@@ -1,6 +1,10 @@
 
 
 const todoRecord = class{
-    constructor() {
+    name;
+    content;
+    constructor(name, content) {
+        this.name = name
+        this.content = content
     }
 }
